@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/logo512.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael Lee — Whirlfolio</title>
+    <meta
+      name="description"
+      content="Michael Lee — Full Stack Software Engineer & M.S. Computer Science @ UT Austin. Explore an interactive career galaxy, or read the résumé directly."
+    />
+    <meta property="og:title" content="Michael Lee — Whirlfolio" />
+    <meta
+      property="og:description"
+      content="An interactive career galaxy. Full Stack Software Engineer & M.S. Computer Science @ UT Austin."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0a0b12" />
+    <script>
+      // Apply theme before paint to avoid a flash (mirrors store initialTheme).
+      (function () {
+        try {
+          var s = localStorage.getItem('whirlfolio-theme')
+          var dark = s ? s === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches
+          if (dark) document.documentElement.classList.add('dark')
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
