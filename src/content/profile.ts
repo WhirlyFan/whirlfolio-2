@@ -7,6 +7,14 @@ export const profile: Profile = {
   email: 'mhykoly@gmail.com',
   phone: '714-504-3953',
   linkedin: 'https://linkedin.com/in/mhykoly',
+  instagram: 'https://www.instagram.com/mhykoly/',
+  wellfound: 'https://wellfound.com/u/mhykoly/',
+
+  about:
+    "I'm a software engineer — a.k.a. WhirlyFan — with an M.S. in Computer Science focused on AI development. I love working with new technologies and constantly upgrading my skills, and outside of work you'll catch me snowboarding or travelling.",
+  // A line from my original 2022 portfolio — kept as a time capsule.
+  aboutQuote: 'I believe artificial intelligence will inevitably rule us all one day. :)',
+  aboutQuoteYear: 2022,
   github: 'https://github.com/WhirlyFan',
   // Drop a square image at public/michael.jpg to replace the placeholder.
   photo: '/michael.jpg',

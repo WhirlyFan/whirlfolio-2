@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { Download, Mail, Phone, Sparkles } from 'lucide-react'
+import { Download, Mail, Phone, Rocket, Sparkles } from 'lucide-react'
 import { profile, sections } from '@/content'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -43,6 +43,23 @@ export function ListView() {
           </div>
         </div>
       </section>
+
+      {/* About — current summary + a preserved 2022 quote */}
+      {(profile.about || profile.aboutQuote) && (
+        <section className="mt-10 flex flex-col gap-4">
+          {profile.about && (
+            <p className="max-w-prose text-foreground/85">{profile.about}</p>
+          )}
+          {profile.aboutQuote && (
+            <blockquote className="rounded-lg border-l-2 border-primary/60 bg-card/40 py-3 pr-4 pl-5">
+              <p className="text-foreground/85 italic">“{profile.aboutQuote}”</p>
+              <footer className="mt-2 text-sm text-muted-foreground not-italic">
+                — Michael{profile.aboutQuoteYear ? `, ${profile.aboutQuoteYear}` : ''}
+              </footer>
+            </blockquote>
+          )}
+        </section>
+      )}
 
       {/* Skills */}
       <section className="mt-12" aria-labelledby="skills-heading">
@@ -119,6 +136,8 @@ function ContactRow() {
     profile.phone && { icon: Phone, label: profile.phone, href: `tel:${profile.phone}` },
     profile.linkedin && { icon: LinkedinIcon, label: 'LinkedIn', href: profile.linkedin },
     profile.github && { icon: GithubIcon, label: 'GitHub', href: profile.github },
+    profile.instagram && { icon: InstagramIcon, label: 'Instagram', href: profile.instagram },
+    profile.wellfound && { icon: Rocket, label: 'Wellfound', href: profile.wellfound },
   ].filter(Boolean) as { icon: IconType; label: string; href: string }[]
 
   return (
@@ -140,6 +159,14 @@ function ContactRow() {
 }
 
 /* Brand icons (lucide v1 dropped these for trademark reasons). */
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.62c-3.15 0-3.5.01-4.74.07-.89.04-1.37.19-1.69.31-.43.17-.73.36-1.05.68-.32.32-.51.62-.68 1.05-.12.32-.27.8-.31 1.69-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.89.19 1.37.31 1.69.17.43.36.73.68 1.05.32.32.62.51 1.05.68.32.12.8.27 1.69.31 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.89-.04 1.37-.19 1.69-.31.43-.17.73-.36 1.05-.68.32-.32.51-.62.68-1.05.12-.32.27-.8.31-1.69.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.89-.19-1.37-.31-1.69a2.8 2.8 0 0 0-.68-1.05 2.8 2.8 0 0 0-1.05-.68c-.32-.12-.8-.27-1.69-.31-1.24-.06-1.59-.07-4.74-.07Zm0 2.76a5.46 5.46 0 1 1 0 10.92 5.46 5.46 0 0 1 0-10.92Zm0 9a3.54 3.54 0 1 0 0-7.08 3.54 3.54 0 0 0 0 7.08Zm6.95-9.22a1.28 1.28 0 1 1-2.55 0 1.28 1.28 0 0 1 2.55 0Z" />
+    </svg>
+  )
+}
+
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>

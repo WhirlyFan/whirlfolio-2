@@ -139,6 +139,17 @@ function ProfileDetail() {
       </SheetHeader>
 
       <div className="flex flex-col gap-5 overflow-y-auto px-6 pb-6">
+        {profile.about && <p className="text-sm text-foreground/85">{profile.about}</p>}
+
+        {profile.aboutQuote && (
+          <blockquote className="border-l-2 border-primary/60 pl-3">
+            <p className="text-sm text-foreground/85 italic">“{profile.aboutQuote}”</p>
+            <footer className="mt-1.5 text-xs text-muted-foreground not-italic">
+              — Michael{profile.aboutQuoteYear ? `, ${profile.aboutQuoteYear}` : ''}
+            </footer>
+          </blockquote>
+        )}
+
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">Technologies</h3>
           <div className="flex flex-wrap gap-1.5">

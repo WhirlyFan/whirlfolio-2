@@ -61,6 +61,13 @@ export interface Profile {
   phone?: string
   linkedin?: string
   github?: string
+  instagram?: string
+  wellfound?: string
+  /** Current about-me summary (plain prose). */
+  about?: string
+  /** A preserved time-capsule line + the year it was written (shown as a quote). */
+  aboutQuote?: string
+  aboutQuoteYear?: number
   /** Path under /public for the profile photo (square works best). */
   photo: string
   /** Path under /public for the downloadable resume PDF. */
