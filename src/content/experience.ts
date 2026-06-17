@@ -22,6 +22,20 @@ export const experience: CareerNode[] = [
     tags: ['Python', 'FastAPI', 'FastMCP', 'TypeScript', 'React', 'LLM Orchestration', 'CI/CD', 'PostgreSQL', 'SSE'],
   },
   {
+    id: 'ut-ta',
+    type: 'experience',
+    title: 'Graduate Teaching Assistant',
+    org: 'The University of Texas at Austin',
+    location: 'Austin, TX · Part-time',
+    start: 'Aug 2025',
+    end: 'Present',
+    summary: 'TA for graduate machine learning and AI courses.',
+    highlights: [
+      'Teaching assistant for "Deep Learning", "Case Studies in Machine Learning", and "Planning, Search, and Reasoning Under Uncertainty"',
+    ],
+    tags: ['Deep Learning', 'Machine Learning', 'Planning & Search', 'Teaching'],
+  },
+  {
     id: 'nouryon',
     type: 'experience',
     title: 'AI and Data Science Intern',

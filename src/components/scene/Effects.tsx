@@ -1,11 +1,16 @@
-import { Bloom, EffectComposer } from '@react-three/postprocessing'
+import { useMemo } from 'react'
+import { Vector2 } from 'three'
+import { Bloom, ChromaticAberration, EffectComposer, Vignette } from '@react-three/postprocessing'
 
 /**
- * Selective bloom — only the over-bright emissive materials (core + career
- * stars, which set emissiveIntensity > 1 and toneMapped={false}) glow. Mounted
- * on the high quality tier only.
+ * Cinematic post-processing (high tier only):
+ * - Bloom — selective glow on the over-bright emissive materials (core, stars).
+ * - ChromaticAberration — a faint lens fringe at the edges.
+ * - Vignette — gently darkens the corners to focus the eye on the galaxy.
  */
 export function Effects() {
+  const caOffset = useMemo(() => new Vector2(0.0007, 0.0007), [])
+
   return (
     <EffectComposer>
       <Bloom
@@ -15,6 +20,8 @@ export function Effects() {
         luminanceSmoothing={0.25}
         radius={0.7}
       />
+      <ChromaticAberration offset={caOffset} radialModulation modulationOffset={0.4} />
+      <Vignette offset={0.3} darkness={0.7} eskil={false} />
     </EffectComposer>
   )
 }

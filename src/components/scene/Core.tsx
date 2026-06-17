@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { profile } from '@/content'
 import { useStore } from '@/store/useStore'
 import { PROFILE_ID } from '@/scene/constants'
-import { getCircleTexture } from '@/scene/textures'
+import { getCircleTexture, getStarTexture } from '@/scene/textures'
 
 const sunVertex = /* glsl */ `
   varying vec3 vPos;
@@ -102,6 +102,7 @@ const sunFragment = /* glsl */ `
  */
 export function Core() {
   const meshRef = useRef<THREE.Mesh>(null)
+  const raysRef = useRef<THREE.SpriteMaterial>(null)
   const select = useStore((s) => s.select)
   const reducedMotion = useStore((s) => s.reducedMotion)
 
@@ -118,12 +119,13 @@ export function Core() {
 
   useEffect(() => () => material.dispose(), [material])
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (!reducedMotion) material.uniforms.uTime.value = state.clock.elapsedTime
     if (meshRef.current) {
       const t = reducedMotion ? 0 : state.clock.elapsedTime
       meshRef.current.scale.setScalar(1 + Math.sin(t * 1.5) * 0.03)
     }
+    if (raysRef.current && !reducedMotion) raysRef.current.rotation += delta * 0.05
   })
 
   return (
@@ -147,6 +149,20 @@ export function Core() {
       >
         <sphereGeometry args={[1.1, 64, 64]} />
       </mesh>
+
+      {/* slowly-rotating corona rays (the spiked star texture, warm + faint) */}
+      <sprite scale={[3.6, 3.6, 1]}>
+        <spriteMaterial
+          ref={raysRef}
+          map={getStarTexture()}
+          color="#ffb060"
+          transparent
+          opacity={0.35}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+          toneMapped={false}
+        />
+      </sprite>
 
       {/* soft corona — a billboarded radial glow (no hard sphere-limb ring) */}
       <sprite scale={[6, 6, 1]}>

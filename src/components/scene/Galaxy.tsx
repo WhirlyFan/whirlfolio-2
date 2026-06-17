@@ -8,6 +8,7 @@ import { Core } from './Core'
 import { CareerStars } from './CareerStars'
 import { ShootingStar } from './ShootingStar'
 import { PhotoCluster } from './PhotoCluster'
+import { Meteors } from './Meteors'
 import { CameraRig } from './CameraRig'
 import { Effects } from './Effects'
 
@@ -24,7 +25,7 @@ export default function Galaxy() {
   return (
     <Canvas
       style={{ position: 'fixed', inset: 0 }}
-      camera={{ position: [0, 9, 15], fov: 55, near: 0.1, far: 120 }}
+      camera={{ position: [34, 20, 30], fov: 55, near: 0.1, far: 200 }}
       dpr={dpr}
       gl={{ antialias: quality === 'high', powerPreference: 'high-performance' }}
       onPointerMissed={() => select(null)}
@@ -39,6 +40,7 @@ export default function Galaxy() {
         <CareerStars placed={placed} />
         <PhotoCluster />
         <ShootingStar />
+        <Meteors />
         <CameraRig />
         {quality === 'high' && <Effects />}
       </Suspense>

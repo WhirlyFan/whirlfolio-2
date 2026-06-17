@@ -73,7 +73,7 @@ export function CameraRig() {
       smoothTime={0.5}
       draggingSmoothTime={0.18}
       minDistance={2.5}
-      maxDistance={42}
+      maxDistance={55}
       dollyToCursor
     />
   )
