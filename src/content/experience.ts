@@ -17,9 +17,9 @@ export const experience: CareerNode[] = [
       'Designed frontend overhaul, cutting load times by 50% via cache invalidation and real-time cross-client updates using server-sent events',
       'Designed backend architecture to scale from seed to enterprise — CI/CD workflows, migration management, ORMs, backend service layers, and AI orchestration',
       'Engineered LLM workflows to automatically process and surface relevant contract recommendations to customers',
-      'Leveraged AI-assisted development workflows to work across multiple tickets simultaneously, increasing throughput',
+      'Designed and implemented RBAC and RLS policies to secure the platform across services such as MCP and HTTP',
     ],
-    tags: ['Python', 'FastAPI', 'FastMCP', 'TypeScript', 'React', 'LLM Orchestration', 'CI/CD', 'PostgreSQL', 'SSE'],
+    tags: ['Python', 'FastAPI', 'FastMCP', 'TypeScript', 'React', 'LLM Orchestration', 'RBAC/RLS', 'CI/CD', 'PostgreSQL', 'SSE'],
   },
   {
     id: 'ut-ta',
